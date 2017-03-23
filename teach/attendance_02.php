@@ -11,7 +11,7 @@
 		$acad_term = $_SESSION['term'];
 		$course = $_GET['course'];
 		
-		$current_date = date('Ymd');
+		$current_date = '20160318'; ///date('Ymd');
 		
 		$count = $_GET['count'];
 		if ($count == ''){

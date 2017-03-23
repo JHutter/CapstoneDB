@@ -80,7 +80,7 @@ function get_report_card_mid($acad_year, $acad_term, $student_id) {
 		$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
 		$class_border = 'class=bordered';
 		$html .= "<table class=wide><tr><td colspan=4 align=left class=info-table><br><strong>Mid-Term Grade and Attendance: {$ses1_dates}</strong></td></tr>";
-		$html .= "<tr ><td {$class_border}>COURSE</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>ATTENDANCE %</td></tr>";
+		$html .= "<tr ><td {$class_border}>course</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>attendance %</td></tr>";
 		
 		$skills = array('10am','11am','mwfpm','tthpm');
 			
@@ -107,7 +107,7 @@ function get_report_card_mid($acad_year, $acad_term, $student_id) {
 	
 	
 	$html .= "<tr><td colspan=4 align=left class=info-table><br><strong>Term Grade and Attendance: {$term_dates}</strong></td>";
-	$html .= "<tr ><td {$class}>COURSE</td><td {$class}>TEACHER</td><td {$class}>TERM<br>GRADE</td><td {$class}>ATTENDANCE %</td></tr>";
+	$html .= "<tr ><td {$class}>course</td><td {$class}>TEACHER</td><td {$class}>TERM<br>GRADE</td><td {$class}>attendance %</td></tr>";
 	$html .= "<tr><td {$class}>Speaking & Listening </td><td {$class}>---</td><td {$class}>---</td><td {$class}>---</td></tr>";
 	$html .= "<tr><td {$class}>Reading & Writing </td><td {$class}>---</td><td {$class}>---</td><td {$class}>---</td></tr>";
 	$html .= "<tr><td {$class}>Grammar </td><td {$class}>---</td><td {$class}>---</td><td {$class}>---</td></tr>";
@@ -199,7 +199,7 @@ function get_report_card_term($acad_year, $acad_term, $student_id) {
 		$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
 		$class_border = 'class=bordered';
 		$html .= "<table class=wide><tr><td colspan=4 align=left class=info-table><br><strong>Mid-Term Grade and Attendance: {$ses1_dates}</strong></td></tr>";
-		$html .= "<tr ><td {$class_border}>COURSE</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>ATTENDANCE %</td></tr>";
+		$html .= "<tr ><td {$class_border}>course</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>attendance %</td></tr>";
 		
 		$skills = array('10am','11am','mwfpm','tthpm');
 			
@@ -226,7 +226,7 @@ function get_report_card_term($acad_year, $acad_term, $student_id) {
 	
 	//ses2 table
 	$html .= "<tr><td colspan=4 align=left class=info-table><br><strong>Term Grade and Attendance: {$term_dates}</strong></td>";
-	$html .= "<tr ><td {$class}>COURSE</td><td {$class}>TEACHER</td><td {$class}>TERM<br>GRADE</td><td {$class}>ATTENDANCE %<br>SESSION {$acad_session2}</td></tr>";
+	$html .= "<tr ><td {$class}>course</td><td {$class}>TEACHER</td><td {$class}>TERM<br>GRADE</td><td {$class}>attendance %<br>SESSION {$acad_session2}</td></tr>";
 	$skills = array('10am','11am','mwfpm','tthpm');
 	foreach ($skills as $skill) {
 		$course = get_course_from_skill($skill, $student_id, $acad_year, $acad_session2);

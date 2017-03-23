@@ -38,7 +38,7 @@
 		$students = $students = get_stus_by_course_alpha($course, $acad_year, $chosen_session);
 		$sql_get_stus = "select grade{$category}.student_id as 'student_id'
 							from grade{$category}
-							left join STUDENTINFO on grade{$category}.student_id = STUDENTINFO.student_id
+							left join studentinfo on grade{$category}.student_id = studentinfo.student_id
 							where acad_year = {$acad_year}
 							and acad_session = {$chosen_session}
 							and course_id = '{$course}'

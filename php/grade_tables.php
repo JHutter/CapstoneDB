@@ -106,6 +106,10 @@ function get_grade_cat_total($student_id, $course, $category, $acad_year, $acad_
 	$points_actual = get_point_cat_stu($student_id, $course, $category, $acad_year, $acad_session);
 	$points_total = get_point_cat_total($student_id, $course, $category, $acad_year, $acad_session);
 	
+	if ($points_total == 0){
+		return 0;
+	}
+	
 	$final_percent = ($points_actual / $points_total) * 100.0;
 	return $final_percent;
 }
@@ -133,6 +137,9 @@ function get_session_grade($student_id, $course, $acad_year, $acad_session) {
 	}
 	$grade20 *= .20;
 	
+	if ($grade_weight == 0){
+		return 0;
+	}
 	$grade_total = ($grade40a + $grade40b + $grade20) / $grade_weight;
 	return $grade_total;
 }

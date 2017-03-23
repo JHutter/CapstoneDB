@@ -13,7 +13,7 @@
 		$course = $_GET['course'];
 		$css_filepath = '../css/pdf_style.css';
 		$filename = "{$course}-Session{$acad_session}-{$acad_year}-classlist.pdf";
-		$date = date('M-d');
+		$date = '03/18';//date('M-d');
 		$filename_attn = "{$course}-attn-{$date}.pdf";
 	?>
 </head>

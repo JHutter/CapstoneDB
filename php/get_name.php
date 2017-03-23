@@ -219,13 +219,13 @@ function get_student_course_by_type($student_id, $acad_year, $acad_session, $typ
 function get_courses_array($student_id, $acad_year, $acad_session) {
 	$pdo = Database::connect();
 	
-	$sql_sched = "select	distinct COURSEENROLLMENT.course_id AS 'course_id'
-				from COURSEENROLLMENT
-				left join COURSE on COURSEENROLLMENT.course_id = COURSE.course_id
-				WHERE 	COURSEENROLLMENT.acad_year = {$acad_year}
-				AND 	COURSEENROLLMENT.acad_session = {$acad_session}
-				AND 	COURSEENROLLMENT.student_id = '{$student_id}'
-				ORDER BY COURSE.course_type";
+	$sql_sched = "select	distinct courseenrollment.course_id AS 'course_id'
+				from courseenrollment
+				left join course on courseenrollment.course_id = course.course_id
+				WHERE 	courseenrollment.acad_year = {$acad_year}
+				AND 	courseenrollment.acad_session = {$acad_session}
+				AND 	courseenrollment.student_id = '{$student_id}'
+				ORDER BY course.course_type";
 
 	$courses = [];
 	foreach ($pdo->query($sql_sched) as $row_course){

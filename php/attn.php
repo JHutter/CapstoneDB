@@ -39,10 +39,10 @@ function get_class_attn_table($course, $acad_year, $acad_session) {
 						and course_type = '{$course_type}'
 						order by date";
 						
-	$sql_get_stus = "SELECT COURSEENROLLMENT.student_id AS 'sID',
+	$sql_get_stus = "SELECT courseenrollment.student_id AS 'sID',
 							CONCAT(stu_first, ' ', stu_last) AS 'SName'
-					FROM COURSEENROLLMENT
-					left join STUDENTINFO on COURSEENROLLMENT.student_id = STUDENTINFO.student_id
+					FROM courseenrollment
+					left join studentinfo on courseenrollment.student_id = studentinfo.student_id
 					where acad_year = {$acad_year}
 					and acad_session = {$acad_session}
 					and course_id = '{$course}'
@@ -73,7 +73,7 @@ function get_class_attn_table($course, $acad_year, $acad_session) {
 		foreach ($pdo->query($sql_get_dates) as $row_dates_attn){
 			$date = $row_dates_attn['tableDate'];
 			$sql_get_attn = "SELECT attendance_yn
-							from ATTENDANCE 
+							from attendance 
 							where acad_year = {$acad_year} 
 							and acad_session = {$acad_session}
 							and student_id = '{$id}'
@@ -125,10 +125,10 @@ function get_class_attn_grades($course, $acad_year, $acad_session) {
 	// connect to db
 	$pdo = Database::connect();
 	
-	$sql_get_stus = "SELECT COURSEENROLLMENT.student_id AS 'sID',
+	$sql_get_stus = "SELECT courseenrollment.student_id AS 'sID',
 							CONCAT(stu_first, ' ', stu_last) AS 'SName'
-					FROM COURSEENROLLMENT
-					left join STUDENTINFO on COURSEENROLLMENT.student_id = STUDENTINFO.student_id
+					FROM courseenrollment
+					left join studentinfo on courseenrollment.student_id = studentinfo.student_id
 					where acad_year = {$acad_year}
 					and acad_session = {$acad_session}
 					and course_id = '{$course}'
@@ -151,7 +151,7 @@ function get_class_attn_grades($course, $acad_year, $acad_session) {
 		
 		// get attendance to tabulate grades
 		$sql_get_attn = "SELECT attendance_yn
-							from ATTENDANCE 
+							from attendance 
 							where acad_year = {$acad_year} 
 							and acad_session = {$acad_session}
 							and student_id = '{$id}'
@@ -233,7 +233,7 @@ function get_student_attn_table($student_id, $acad_year, $acad_session) {
 	$sql_get_dates = "SELECT DISTINCT DATE_FORMAT(class_date, '%a %c/%e') AS 'class_date',
 						class_date AS 'date',
 						DATE_FORMAT(class_date, '%Y%m%d') AS 'tableDate'
-						from ATTENDANCE
+						from attendance
 						where acad_year = {$acad_year}
 						and acad_session = {$acad_session}
 						and course_id like 'SL%'
@@ -260,7 +260,7 @@ function get_student_attn_table($student_id, $acad_year, $acad_session) {
 		$sql_get_dates = "SELECT DISTINCT DATE_FORMAT(class_date, '%a %c/%e') AS 'class_date',
 								class_date AS 'date',
 								DATE_FORMAT(class_date, '%Y%m%d') AS 'tableDate'
-									from ATTENDANCE
+									from attendance
 									where acad_year = {$acad_year}
 									and acad_session = {$acad_session}
 									and course_id like 'SL%'

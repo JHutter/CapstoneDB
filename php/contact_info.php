@@ -26,7 +26,7 @@ function change_stu_email($student, $email) {
 	$name = get_student_name($student);
 	$date = date('m/d/y');
 	
-	$sql_alter_email = "update STUDENTCONTACT set stu_email1 = '{$email}' where student_id = '{$student}'";
+	$sql_alter_email = "update studentcontact set stu_email1 = '{$email}' where student_id = '{$student}'";
 	$pdo->exec($sql_alter_email);
 	$message = "Email address changed for {$name}, ID {$student} on {$date}";
 	

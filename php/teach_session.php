@@ -1,28 +1,31 @@
 <?php
 // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-$connection = mysql_connect("localhost", "root", "CapstoneEMC");
+$connection = mysqli_connect("aa257otozcc6lg.c9f1gdrefypl.us-west-2.rds.amazonaws.com:3306", "root", "jbCC8wUb");
 
 // Selecting Database
-$db = mysql_select_db("cemc", $connection);
+$db = mysqli_select_db($connection, "cemc");
 session_start();// Starting Session
 // Storing Session
 $user_check=$_SESSION['login_user'];
 // SQL Query To Fetch Complete Information Of User
-$ses_sql=mysql_query("select user_id from login where user_id='$user_check' and access_level = 'teacher'", $connection);
-$row = mysql_fetch_assoc($ses_sql);
+$ses_sql=mysqli_query($connection, "select user_id from login where user_id='$user_check' and access_level = 'teacher'");
+$row = mysqli_fetch_assoc($ses_sql);
 $login_session =$row['user_id'];
 
-$ses_sql=mysql_query("select CONCAT(teacher_first, ' ', teacher_last) as teacher_name from teacher where teacher_id='$user_check'", $connection);
-$row2 = mysql_fetch_assoc($ses_sql);
+
+$ses_sql=mysqli_query($connection, "select CONCAT(teacher_first, ' ', teacher_last) as teacher_name from teacher where teacher_id='$user_check'");
+$row2 = mysqli_fetch_assoc($ses_sql);
 $teacher_name = $row2['teacher_name'];
 
-$date = date('Ymd');
+//$date = date('Ymd');
+$date = 20160318;
+
 // get the current session
 $sql_get_session = "select acad_session from calendar 
 					where session_start <= {$date}
 					order by acad_session asc"; 
-$result = mysql_query($sql_get_session);
-while ($row2 = mysql_fetch_array($result)) {
+$result = mysqli_query($connection, $sql_get_session);
+while ($row2 = mysqli_fetch_array($result)) {
 	$acad_session = $row2['acad_session'];
 }
 switch ($acad_session) {
@@ -49,10 +52,10 @@ switch ($acad_session) {
 
 
 if(!isset($login_session)){
-mysql_close($connection); // Closing Connection
-header('Location: ../index.php'); // Redirecting To Home Page
+	mysqli_close($connection); // Closing Connection
+	header('Location: ../index.php'); // Redirecting To Home Page
 }
-$_SESSION['year'] = date("Y");
+$_SESSION['year'] = 2016;
 $_SESSION['session'] = $acad_session;
 $_SESSION['user_id'] = $login_session;
 $_SESSION['term'] = $acad_term;

@@ -6,10 +6,10 @@
 		$pdo = Database::connect();
 		$link_list = "";
 		
-		$sql_courses = "SELECT 	COURSEASSIGNMENT.course_id AS 'course_id',
-						CONCAT(COURSE.skill, ' ', COURSE.sk_level) AS 'course_name'
-						FROM COURSEASSIGNMENT 
-						left join COURSE on COURSEASSIGNMENT.course_id = COURSE.course_id
+		$sql_courses = "SELECT 	courseassignment.course_id AS 'course_id',
+						CONCAT(course.skill, ' ', course.sk_level) AS 'course_name'
+						FROM courseassignment
+						left join course on courseassignment.course_id = course.course_id
 						WHERE teacher_id = '{$teacher}' 
 						AND acad_year = {$acad_year} 
 						AND acad_session = {$acad_session}";

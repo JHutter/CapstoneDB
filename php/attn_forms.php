@@ -12,10 +12,10 @@
 		$late = 0;
 		$absent = 0;
 		$can_take_attn = 0;
-		$sql_get_stus = "SELECT COURSEENROLLMENT.student_id AS 'sID',
+		$sql_get_stus = "SELECT courseenrollment.student_id AS 'sID',
 						CONCAT(stu_first, ' ', stu_last) AS 'SName'
-						FROM COURSEENROLLMENT
-						left join STUDENTINFO on COURSEENROLLMENT.student_id = STUDENTINFO.student_id
+						FROM courseenrollment
+						left join studentinfo on courseenrollment.student_id = studentinfo.student_id
 						where acad_year = {$acad_year}
 						and acad_session = {$acad_session}
 						and course_id = '{$course}'
@@ -33,7 +33,7 @@
 			$id = $row_stus['sID'];
 			
 			$sql_get_attn = "SELECT attendance_yn
-							from ATTENDANCE
+							from attendance
 							where student_id = '{$id}'
 							and course_id = '{$course}'
 							and acad_year = {$acad_year}

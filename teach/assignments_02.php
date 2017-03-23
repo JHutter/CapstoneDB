@@ -22,7 +22,7 @@
 		$category = $_GET['category'];
 		$assignment = $_GET['assignment'];
 		$cat_name = get_course_name_singular($course, $category);
-		$date = date('Md');
+		$date = '03/18';//date('Md');
 		$course_name = get_course_title($course);
 		$students = get_stus_by_course_alpha($course, $acad_year, $chosen_session);
 		

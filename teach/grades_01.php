@@ -182,7 +182,7 @@
 		$course_type_name = get_nice_skills($course_type);
 		$student = trim($_GET['student']);
 		$student_name = get_student_name($student);
-		$date = date('m d, y');
+		$date = 'March 18, 2016';//date('m d, y');
 		$categories = ['40a','40b','20'];
 		
 		$course_is_assigned = course_is_assigned($teacher, $course, $acad_year, $chosen_session);

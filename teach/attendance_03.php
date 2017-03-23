@@ -12,7 +12,7 @@
 		$acad_term = $_SESSION['term'];
 		$course = $_GET['course'];
 		
-		$current_date = date('Ymd');
+		$current_date = '20160318';//date('Ymd');
 		
 		
 		$message = exec_attn_class($course, $acad_year, $acad_session, $user_name, $current_date);

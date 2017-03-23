@@ -8,11 +8,11 @@ include_once('forms.php');
 function get_stu_list($course, $acad_year, $acad_session) {
 	$pdo = Database::connect();
 	$stu_count = 0;
-	$sql_stus = "SELECT COURSEENROLLMENT.student_id AS 'student_id',
+	$sql_stus = "SELECT courseenrollment.student_id AS 'student_id',
 					CONCAT(stu_first, ' ', stu_last) AS 'SName',
 					stu_email1
-			FROM COURSEENROLLMENT
-			left join STUDENTINFO on COURSEENROLLMENT.student_id = STUDENTINFO.student_id
+			FROM courseenrollment
+			left join studentinfo on courseenrollment.student_id = studentinfo.student_id
 			left join studentcontact on studentinfo.student_id = studentcontact.student_id
 			WHERE acad_year = {$acad_year} 
 			AND acad_session = {$acad_session}
@@ -44,11 +44,11 @@ function get_stu_list_attn($course, $acad_year, $acad_session) {
 	$date = date('l, F d');
 	$title = "<h3>Attendance for {$course} for {$date}</h3>";
 	$stu_count = 0;
-	$sql_stus = "SELECT COURSEENROLLMENT.student_id AS 'student_id',
+	$sql_stus = "SELECT courseenrollment.student_id AS 'student_id',
 					CONCAT(stu_first, ' ', stu_last) AS 'SName',
 					stu_email1
-				FROM COURSEENROLLMENT
-				left join STUDENTINFO on COURSEENROLLMENT.student_id = STUDENTINFO.student_id
+				FROM courseenrollment
+				left join studentinfo on courseenrollment.student_id = studentinfo.student_id
 				left join studentcontact on studentinfo.student_id = studentcontact.student_id
 				WHERE acad_year = {$acad_year} 
 				AND acad_session = {$acad_session}

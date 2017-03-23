@@ -1,9 +1,10 @@
 <!DOCTYPE html>
  <head>
 	<title>CapstoneDB</title>
-	<?php include("../resources/text/link.php");?>
+	<?php include_once("../resources/text/link.php"); error_reporting(E_ALL); 
+				ini_set('display_errors', 1);?>
 	<?php
-		include("../php/teach_session.php");
+		include_once("../php/teach_session.php");
 	?>
 </head>
 <body>
@@ -16,7 +17,7 @@
 	
 	<div id="nav">
 		<?php 
-			include("../resources/menu/teach_menu.php");
+			include_once("../resources/menu/teach_menu.php");
 		?>
 		
 		<br><br><br><br>

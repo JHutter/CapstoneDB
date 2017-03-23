@@ -26,22 +26,22 @@ function populate_session($acad_year, $acad_session) {
 			$course_type = get_type_from_course($course);
 			$dates = get_course_dates_by_type($course_type, $acad_year, $acad_session);
 			
-			$sql_insert_coursegrade = "INSERT INTO SESSIONGRADE
+			$sql_insert_coursegrade = "INSERT INTO sessiongrade
 										(course_type, acad_year, acad_session, student_id)
 									VALUES
 									('{$course_type}', {$acad_year}, {$acad_session}, '{$student}')";
-			$sql_insert_termgrade = "INSERT INTO termGRADE
+			$sql_insert_termgrade = "INSERT INTO termgrade
 										(course_type, acad_year, acad_term, student_id)
 									VALUES
 									('{$course_type}', {$acad_year}, {$acad_term}, '{$student}')";
 									
-			$sql_insert_final_attn = "INSERT INTO ATTENDANCE_FINAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_final_attn = "INSERT INTO attendance_final (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student}')";
-			$sql_insert_grade40a_total = "INSERT INTO GRADE40ATOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade40a_total = "INSERT INTO grade40atotal (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student}')";
-			$sql_insert_grade40b_total = "INSERT INTO GRADE40BTOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade40b_total = "INSERT INTO grade40btotal (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student}')";
-			$sql_insert_grade20_total = "INSERT INTO GRADE20TOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade20_total = "INSERT INTO grade20total (acad_year, acad_session, course_id, student_id)
 									VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student}')";
 					
 			// $message .= $sql_insert_coursegrade."<br><BR>";

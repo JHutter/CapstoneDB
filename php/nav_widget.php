@@ -9,7 +9,8 @@
 // }
 
 function get_login_widget_div($user_name) {
-	$date = Date('l, F d');
+	//$date = Date('l, F d');
+	$date = 'Wednesday, March 18';
 	
 	$widget_text = "<div id='widget'><strong>Term: </strong>";
 	$widget_text .= "Term {$_SESSION['term']}, Session {$_SESSION['session']}";

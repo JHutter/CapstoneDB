@@ -5,16 +5,16 @@
 
 	function get_teacher_schedule($teacher, $acad_year, $acad_session) {
 		$pdo = Database::connect();
-		$sql = "SELECT 	CONCAT(COURSEASSIGNMENT.course_id, ':  ',  COURSE.skill, ' ', COURSE.sk_level) AS 'Course',
-				COURSE_TYPE.course_time AS 'Course Time',
+		$sql = "SELECT 	CONCAT(courseassignment.course_id, ':  ',  course.skill, ' ', course.sk_level) AS 'Course',
+				course_type.course_time AS 'Course Time',
 				room
-				FROM COURSEASSIGNMENT 
-				left join COURSE on COURSEASSIGNMENT.course_id = COURSE.course_id
-				left join COURSE_TYPE on COURSE.course_type = COURSE_TYPE.course_type
+				FROM courseassignment
+				left join course on courseassignment.course_id = course.course_id
+				left join course_type on course.course_type = course_type.course_type
 				WHERE teacher_id = '{$teacher}' 
 				AND acad_year = {$acad_year} 
 				AND acad_session = {$acad_session}
-				ORDER BY COURSE_TYPE.course_order";
+				ORDER BY course_type.course_order";
 
 		$table = "<table><thead><tr><th>Course</th><th>Course Time</th><th>Room</th></tr></thead><tbody>";
 		
@@ -34,7 +34,7 @@
 	function get_active_teacher_links($acad_year, $acad_session, $base_url) {
 		$pdo = Database::connect();
 		$sql = "SELECT 	distinct courseassignment.teacher_id as 'teacher_id'
-				FROM COURSEASSIGNMENT 
+				FROM courseassignment 
 				left join teacher on courseassignment.teacher_id = teacher.teacher_id
 				WHERE acad_year = {$acad_year} 
 				AND acad_session = {$acad_session}

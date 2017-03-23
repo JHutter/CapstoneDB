@@ -3,7 +3,7 @@
 }
 
 body, #section {
-	background-color: lightgreen;
+	background-color: lightblue;
 }
 
 #header {
@@ -95,10 +95,10 @@ body, #section {
 }
 
 #widget {
-	border-radius: 10px;
+	border-radius: 7px;
 	background-color: midnightblue;
 	color: white;
-	padding: 20px;
+	padding: 15px;
 	float: left;
  
     
@@ -215,8 +215,8 @@ p {
 
 .button {
 	white-space: pre;
-	margin-left: 6px;
-	margin-right: 6px;
+	margin-left: 4px;
+	margin-right: 4px;
 	margin-top: 1px;
 	margin-bottom: 1px;
     display: inline-block;
@@ -225,7 +225,7 @@ p {
     font-weight: bold;
     background-color: #538fbe;
  
-    font-size: 16px;
+    font-size: 14px;
     border: 1px solid #2d6898;
     background-image: linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);
     background-image: -o-linear-gradient(bottom, rgb(73,132,180) 0%, rgb(97,155,203) 100%);

@@ -24,7 +24,7 @@
 		$sessions = get_session_array($acad_term);
 		$sessions_text = [];
 		$css_filepath = '../css/pdf_style.css';
-		$date = date('Md');
+		$date = '03/18';//date('Md');
 		// $ses1 = 1;
 		// $ses2 = 2;
 		

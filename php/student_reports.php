@@ -228,14 +228,14 @@ function get_attendance_page_student($student_id, $acad_year, $acad_session) {
 	$page .= "<table><thead><tr><th align=left>Course</th><th align=left>Teacher</th><th align=left>Room</th></tr></thead><tbody>";
 
 	$courses = get_courses_array($student_id, $acad_year, $acad_session);
-	// $sql_sched = "select	distinct COURSEENROLLMENT.course_id AS 'course_id'
-				// from COURSEENROLLMENT
-				// left join COURSE on COURSEENROLLMENT.course_id = COURSE.course_id
-				// left join COURSE_TYPE on COURSE.course_type = COURSE_TYPE.course_type
-				// WHERE 	COURSEENROLLMENT.acad_year = {$acad_year}
-				// AND 	COURSEENROLLMENT.acad_session = {$acad_session}
-				// AND 	COURSEENROLLMENT.student_id = '{$student_id}'
-				// ORDER BY COURSE.course_type";
+	// $sql_sched = "select	distinct courseenrollment.course_id AS 'course_id'
+				// from courseenrollment
+				// left join course on courseenrollment.course_id = course.course_id
+				// left join course_type on course.course_type = course_type.course_type
+				// WHERE 	courseenrollment.acad_year = {$acad_year}
+				// AND 	courseenrollment.acad_session = {$acad_session}
+				// AND 	courseenrollment.student_id = '{$student_id}'
+				// ORDER BY course.course_type";
 
 
 	// $course_array = [];
@@ -258,7 +258,7 @@ function get_attendance_page_student($student_id, $acad_year, $acad_session) {
 	$sql_get_dates = "SELECT DISTINCT DATE_FORMAT(class_date, '%a %c/%e') AS 'class_date',
 					class_date AS 'date',
 					DATE_FORMAT(class_date, '%Y%m%d') AS 'tableDate'
-						from ATTENDANCE
+						from attendance
 						where acad_year = {$acad_year}
 						and acad_session = {$acad_session}
 						and course_id like 'SL%'
@@ -271,10 +271,10 @@ function get_attendance_page_student($student_id, $acad_year, $acad_session) {
 	$page .= "</tr></thead>";
 
 	$sql_get_courses = "select	courseenrollment.course_id
-						from COURSEENROLLMENT left join course on courseenrollment.course_id = course.course_id
-						WHERE 	COURSEENROLLMENT.acad_year = {$acad_year}
-						AND 	COURSEENROLLMENT.acad_session = {$acad_session}
-						AND 	COURSEENROLLMENT.student_id = '{$student_id}'
+						from courseenrollment left join course on courseenrollment.course_id = course.course_id
+						WHERE 	courseenrollment.acad_year = {$acad_year}
+						AND 	courseenrollment.acad_session = {$acad_session}
+						AND 	courseenrollment.student_id = '{$student_id}'
 						order by course.course_type";
 
 	foreach ($pdo->query($sql_get_courses) as $row_courses) {
@@ -285,7 +285,7 @@ function get_attendance_page_student($student_id, $acad_year, $acad_session) {
 		$sql_get_dates = "SELECT DISTINCT DATE_FORMAT(class_date, '%a %c/%e') AS 'class_date',
 								class_date AS 'date',
 								DATE_FORMAT(class_date, '%Y%m%d') AS 'tableDate'
-									from ATTENDANCE
+									from attendance
 									where acad_year = {$acad_year}
 									and acad_session = {$acad_session}
 									and course_id like 'SL%'

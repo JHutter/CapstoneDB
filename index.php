@@ -28,7 +28,10 @@
 
 
 	<div id="footer">
-		<?PHP include("resources/text/footer.php") ?> 
+		<?PHP include("resources/text/footer.php");
+				error_reporting(E_ALL); 
+				ini_set('display_errors', 1);
+		?> 
 	</div>
 	
 </body>   

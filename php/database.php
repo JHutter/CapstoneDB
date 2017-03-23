@@ -1,10 +1,13 @@
 <?php
+error_reporting(E_ALL); 
+ini_set('display_errors', 1);
+
 class Database
 {
     private static $dbName = 'cemc' ;
-    private static $dbHost = '127.0.0.1' ;
+    private static $dbHost = 'aa257otozcc6lg.c9f1gdrefypl.us-west-2.rds.amazonaws.com:3306' ;
     private static $dbUsername = 'root';
-    private static $dbUserPassword = 'CapstoneEMC';
+    private static $dbUserPassword = 'jbCC8wUb';
      
     private static $cont  = null;
      

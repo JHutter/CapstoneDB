@@ -80,7 +80,8 @@
 
 		<div id="change_session">
 			<?php 
-				echo $sessions_text[$acad_session-1];
+				//echo $sessions_text[$acad_session-1];
+				echo $sessions_text[0];
 			?>
 		</div>
 		

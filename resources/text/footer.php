@@ -1,4 +1,4 @@
-Capstone English Center really cares about you and your success.
+Jon Hutter, 2017
 <hr noshade size="1">
 
 

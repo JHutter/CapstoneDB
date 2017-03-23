@@ -96,7 +96,7 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 	$date = date('m/d/Y');
 	$acad_term = get_term_from_session($acad_year, $acad_session);
 
-	$check_stu_id_new = "SELECT student_id from STUDENTINFO where student_id = '{$student_id}'";
+	$check_stu_id_new = "SELECT student_id from studentinfo where student_id = '{$student_id}'";
 	$stu_id = "";
 	foreach ($pdo->query($check_stu_id_new) as $row_check_id) {
 			$stu_id = $row_check_id['student_id'];
@@ -109,7 +109,7 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 	else {
 		// execute sql to add new student
 		//echo "Valid id";
-		$insert_new_stu = "INSERT INTO STUDENTINFO (student_id, stu_first, stu_last)
+		$insert_new_stu = "INSERT INTO studentinfo (student_id, stu_first, stu_last)
 		VALUES ('{$student_id}', '{$stu_first}', '{$stu_last}')";
 		$pdo->exec($insert_new_stu);
 		$table = "<br>New record created successfully for {$stu_first} {$stu_last}, ID {$student_id}<br>";
@@ -119,14 +119,14 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 		write_to_file($filename, $option, $content);
 		
 		//insert email here
-		$sql_add_stu_to_contact = "INSERT INTO STUDENTCONTACT (student_id, stu_email1)
+		$sql_add_stu_to_contact = "INSERT INTO studentcontact (student_id, stu_email1)
 							VALUES ('{$student_id}', '{$email}')";
 		$pdo->exec($sql_add_stu_to_contact);
 		$table .= "<br>New student contact record created successfully for {$student_id}, email {$email}<br>";
 		
 		// execute sql to add stu to courses
 		foreach ($courses as $course){
-			$insert_new_stu_course = "INSERT INTO COURSEENROLLMENT (course_id, acad_year, acad_session, student_id)
+			$insert_new_stu_course = "INSERT INTO courseenrollment (course_id, acad_year, acad_session, student_id)
 				VALUES ('{$course}', {$acad_year}, {$acad_session}, '{$student_id}')";
 			$pdo->exec($insert_new_stu_course);
 			$table .= $insert_new_stu_course;
@@ -138,22 +138,22 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 			write_to_file($filename, $option, $content);
 			$table .= "<br>{$course} added to student schedule<br>";
 			
-			$sql_insert_coursegrade = "INSERT INTO SESSIONGRADE (course_type, acad_year, acad_session, student_id)
+			$sql_insert_coursegrade = "INSERT INTO sessiongrade (course_type, acad_year, acad_session, student_id)
 									VALUES ('{$course_type}', {$acad_year}, {$acad_session}, '{$student_id}')";
 			$pdo->exec($sql_insert_coursegrade);
-			$sql_insert_termgrade = "INSERT INTO termGRADE (course_type, acad_year, acad_term, student_id)
+			$sql_insert_termgrade = "INSERT INTO termgrade (course_type, acad_year, acad_term, student_id)
 									VALUES ('{$course_type}', {$acad_year}, {$acad_term}, '{$student_id}')";
 			$pdo->exec($sql_insert_termgrade);
-			$sql_insert_final_attn = "INSERT INTO ATTENDANCE_FINAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_final_attn = "INSERT INTO attendance_final (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student_id}')";
 			$pdo->exec($sql_insert_final_attn);
-			$sql_insert_grade40a_total = "INSERT INTO GRADE40ATOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade40a_total = "INSERT INTO grade40atotal (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student_id}')";
 			$pdo->exec($sql_insert_grade40a_total);
-			$sql_insert_grade40b_total = "INSERT INTO GRADE40BTOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade40b_total = "INSERT INTO grade40btotal (acad_year, acad_session, course_id, student_id)
 										VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student_id}')";
 			$pdo->exec($sql_insert_grade40b_total);
-			$sql_insert_grade20_total = "INSERT INTO GRADE20TOTAL (acad_year, acad_session, course_id, student_id)
+			$sql_insert_grade20_total = "INSERT INTO grade20total (acad_year, acad_session, course_id, student_id)
 									VALUES ({$acad_year}, {$acad_session}, '{$course}', '{$student_id}')";
 			$pdo->exec($sql_insert_grade20_total);
 			$content = $sql_insert_coursegrade.";\n";
@@ -167,14 +167,14 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 			$table .= "<br>New student grade record created successfully for {$student_id}, course {$course}<br>";
 			
 			
-			// $sql_course_type = "SELECT course_type from COURSE where course_id = '{$course}'";
+			// $sql_course_type = "SELECT course_type from course where course_id = '{$course}'";
 			// foreach ($pdo->query($sql_course_type) as $row) {
 				// $type = $row['course_type'];
 			// }
 
 			//get dates for that course
 			$sql_get_type_dates = "SELECT DATE_FORMAT(class_date, '%Y%m%d') AS 'class_date'  
-								from SESSION_DATES
+								from session_dates
 								where acad_year = {$acad_year}
 								and acad_session = {$acad_session}
 								and course_type = '{$course_type}'";
@@ -182,7 +182,7 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 			//foreach date, add stu/course/date
 			foreach ($pdo->query($sql_get_type_dates) as $row_dates) {
 				$class_date = $row_dates['class_date'];
-				$sql_insert_attendance = "INSERT INTO ATTENDANCE (course_id, acad_year, acad_session, student_id, class_date)
+				$sql_insert_attendance = "INSERT INTO attendance (course_id, acad_year, acad_session, student_id, class_date)
 										VALUES ('{$course}', {$acad_year}, {$acad_session}, '{$student_id}', {$class_date})";
 				$pdo->exec($sql_insert_attendance);
 				

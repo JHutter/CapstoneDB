@@ -17,7 +17,7 @@
 		$chosen_session = $_GET['session'];
 		$acad_term = $_SESSION['term'];
 		$course = $_GET['course'];
-		$date = date('Md');
+		$date ='03/18';//date('Md');
 		$categories_text = [];
 		$cat_names = [];
 		$sessions = get_session_array($acad_term);

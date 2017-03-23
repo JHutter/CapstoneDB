@@ -21,7 +21,7 @@
 		$category = $_GET['category'];
 		$cat_name_sg = get_course_name_singular($course, $category);
 		$cat_name_pl = get_course_name_plural($course, $category);
-		$date = date('Md');
+		$date = '03/18';//date('Md');
 		$course_name = get_course_title($course);
 		
 		$target_url_prev = "assignments_06.php";
