@@ -129,7 +129,7 @@ function add_new_student($student_id, $stu_first, $stu_last, $email, $courses, $
 			$insert_new_stu_course = "INSERT INTO courseenrollment (course_id, acad_year, acad_session, student_id)
 				VALUES ('{$course}', {$acad_year}, {$acad_session}, '{$student_id}')";
 			$pdo->exec($insert_new_stu_course);
-			$table .= $insert_new_stu_course;
+			//$table .= $insert_new_stu_course;
 			$table .= "<br>ID {$student_id} added to {$course}";
 			$course_type = get_type_from_course($course);
 			

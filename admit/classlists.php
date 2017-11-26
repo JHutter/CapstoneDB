@@ -7,7 +7,7 @@
 		include_once("../php/classlist.php");
 		include_once("../php/pdf_button.php");
 		include_once("../php/get_name.php");
-		include_once("../php/couse_info.php");
+		include_once("../php/course_info.php");
 		
 		
 		$acad_year = $_SESSION['year'];

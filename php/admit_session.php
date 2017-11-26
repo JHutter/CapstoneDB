@@ -22,7 +22,7 @@ $date = '20160318';
 $sql_get_session = "select acad_session from calendar 
 					where session_start <= {$date}
 					order by acad_session asc"; 
-$result = mysqli_query($sql_get_session);
+$result = mysqli_query($connection, $sql_get_session);
 while ($row2 = mysqli_fetch_array($result)) {
 	$acad_session = $row2['acad_session'];
 }
@@ -53,6 +53,7 @@ mysqli_close($connection); // Closing Connection
 header('Location: ../index.php'); // Redirecting To Home Page
 }
 $_SESSION['year'] = '2016';
+$_SESSION['date'] = $date;
 $_SESSION['session'] = $acad_session;
 $_SESSION['user_id'] = $login_session;
 $_SESSION['term'] = $acad_term;

@@ -37,6 +37,7 @@ function has_diagnostic($student_id) {
 }
 
 function get_report_card_mid($acad_year, $acad_term, $student_id) {
+	$class = "";
 	$acad_session = get_session1($acad_year, $acad_term);
 	$acad_session2 = get_session2($acad_year, $acad_term);
 	$status1 = get_stu_status_by_session_nice($student_id, $acad_session, $acad_year);
@@ -77,7 +78,7 @@ function get_report_card_mid($acad_year, $acad_term, $student_id) {
 		$html .= get_diagnostic_table($acad_year, $acad_term, $student_id);
 	}
 	else {
-		$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
+		//$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
 		$class_border = 'class=bordered';
 		$html .= "<table class=wide><tr><td colspan=4 align=left class=info-table><br><strong>Mid-Term Grade and Attendance: {$ses1_dates}</strong></td></tr>";
 		$html .= "<tr ><td {$class_border}>course</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>attendance %</td></tr>";
@@ -119,6 +120,7 @@ function get_report_card_mid($acad_year, $acad_term, $student_id) {
 }
 	
 function get_report_card_form($target_url){
+	$class = "";
 	$form = "<form method=post action={$target_url} target=_blank>";
 	$form .= "<table><thead><tr><th colspan=2>Report Card</th></tr></thead>";
 	$form .= "<tbody><tr><td>Student ID:</td><td>";
@@ -140,6 +142,7 @@ function get_report_card_form($target_url){
 }
 
 function get_report_card_form_batch($target_url){
+		$class = "";
 		$form = "<form method=post action={$target_url} target=_blank>";
 		$form .= "<table><thead><tr><th colspan=2>Generate Report Cards as PDF on Server</th></tr></thead>";
 		$form .= "<tbody>";
@@ -160,6 +163,7 @@ function get_report_card_form_batch($target_url){
 }
 
 function get_report_card_term($acad_year, $acad_term, $student_id) {
+	$class = "";
 	$acad_session = get_session1($acad_year, $acad_term);
 	$acad_session2 = get_session2($acad_year, $acad_term);
 	$status_ses1 = get_stu_status_by_session_nice($student_id, $acad_session, $acad_year);
@@ -196,7 +200,7 @@ function get_report_card_term($acad_year, $acad_term, $student_id) {
 		$html .= get_diagnostic_table($acad_year, $acad_term, $student_id);
 	}
 	else {
-		$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
+		//$rw_attn_grade = get_attn_grade($skill, $student_id, $acad_year, $acad_session);
 		$class_border = 'class=bordered';
 		$html .= "<table class=wide><tr><td colspan=4 align=left class=info-table><br><strong>Mid-Term Grade and Attendance: {$ses1_dates}</strong></td></tr>";
 		$html .= "<tr ><td {$class_border}>course</td><td {$class_border}>TEACHER</td><td {$class_border}>MID-TERM<br>GRADE</td><td {$class_border}>attendance %</td></tr>";

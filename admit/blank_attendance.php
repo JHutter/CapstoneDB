@@ -8,6 +8,7 @@
 		include_once("../php/pdf_button.php");
 		function get_blank_attn($acad_session) {
 			$pdo = Database::connect();
+			$date = $_SESSION['date'];
 			// return 'foobar';
 			
 			$table = "<table><thead><tr><th colspan=5>Missing Attendance</th></tr></thead><tbody>";
@@ -19,11 +20,11 @@
 								left join courseassignment on attendance.course_id = courseassignment.course_id
 								where attendance.acad_session = {$acad_session} 
 								and courseassignment.acad_session = {$acad_session} 
-								and class_Date < curdate()
+								and class_Date < {$date}
 								and attendance_yn = 'none'
-								order by  teacher_id, course_id, class_Date asc";
+								order by  teacher_id, course_id, class_date asc";
 			
-			foreach ($pdo->query($sql_blank_attn) as $row_attn) {
+			foreach ($pdo->query($sql_blank_attn) as $row_attn) {  
 				$course = $row_attn['course_id'];
 				$teacher = $row_attn['teacher_id'];
 				$class_date = $row_attn['class_date'];

@@ -27,6 +27,8 @@
 		?>
 		
 		<?php
+			$default_username = "admissions";
+			$default_pass = "5555555";
 			include('../php/login_form.php');
 		?>
 
