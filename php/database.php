@@ -4,10 +4,10 @@ ini_set('display_errors', 1);
 
 class Database
 {
-    private static $dbName = 'cemc' ;
-    private static $dbHost = 'aa257otozcc6lg.c9f1gdrefypl.us-west-2.rds.amazonaws.com:3306' ;
-    private static $dbUsername = 'root';
-    private static $dbUserPassword = 'jbCC8wUb';
+    private static $dbName = 'dbname' ;
+    private static $dbHost = 'someMySQLhosthere' ;
+    private static $dbUsername = 'dbUsername';
+    private static $dbUserPassword = 'passwordhere';
      
     private static $cont  = null;
      
