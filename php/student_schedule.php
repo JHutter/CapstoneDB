@@ -64,7 +64,7 @@ function get_schedule_table($student_id, $acad_year, $acad_session) {
 	$courses = get_courses_array($student_id, $acad_year, $acad_session);
 	
 	$class = "class=bordered";
-	$table .= "<table {$class}><thead><tr {$class}><th {$class}> </th><th {$class}>Monday</th><th {$class}>Tuesday</th>";
+	$table = "<table {$class}><thead><tr {$class}><th {$class}> </th><th {$class}>Monday</th><th {$class}>Tuesday</th>";
 	$table .= "<th {$class}>Wednesday</th><th {$class}>Thursday</th><th {$class}>Friday</th></tr></thead><tbody>";
 	
 	
